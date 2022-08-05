@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Login </title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins|Pompiere|Amiko|Rambla|Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href= "E:\Projects\PYXIS_SIH\static\aadhar.css">
+        <!-- {{ url_for('static', filename='./login.css') }}           -->
+    </head>
+    <body>
+
+      <section class="nav-section">
+        <nav>
+            <div class="nav-heading">
+                <!-- <i class="fa-solid fa-headset"></i> -->
+                <span class="talk-heading">PyXiS</span>
+            </div>
+            <!-- <ul class="nav-list">
+            <li class="nav-content">Home</li>
+            <li class="nav-content">Play Now</li>
+            <li class="nav-content">Lorem Ipsum</li>
+            <li class="nav-content">Lorem Ipsum</li>
+            <li class="nav-content">Contact Us</li>
+            </ul> -->
+        </nav>
+    </section>
+</br></br></br></br>
+
+    <div class="container">
+        <div class="typing">
+            <h1> <span class="auto-type"></span></h1>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+        <script>
+            var typed = new Typed(".auto-type", {
+                strings: ["Upload the Image and Biometric information of the person", "Verify the person's Identity", "Get the Name and Address of the person"],
+                typeSpeed: 50,
+                backSpeed: 10,
+                loop: true
+            })
+        </script>
+
+        <input type="file" accept="image/*" name="image" id="file" style="display: none">
+        <label for="file"><img src="E:\Projects\PYXIS_SIH\static\upload_icon.png" class="upload-icon" style="width: 15%;"></label>
+        <!-- <div class="upload-container"> <label for="file"><button class="button-one">Choose File</button></label></div> -->
+    </div>
