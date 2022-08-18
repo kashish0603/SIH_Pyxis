@@ -32,7 +32,7 @@ def login():
             session['id'] = account['id']
             session['username'] = account['username']
             msg = 'Logged in successfully !'
-            return render_template('index.html', msg = msg)
+            return render_template('index1.html', msg = msg)
         else:
             msg = 'Incorrect username / password !'
     return render_template('login.html', msg = msg)
@@ -61,10 +61,10 @@ def register():
         msg = 'Please fill out the form !'
     return render_template('register.html', msg = msg)
 
-@app.route("/index")
-def index():
+@app.route("/index1")
+def index1():
     if 'loggedin' in session:
-        return render_template('index.html')
+        return render_template('index1.html')
     return redirect(url_for('login'))
 
 @app.route('/logout')
@@ -78,6 +78,11 @@ def logout():
 def aadhar():
     if 'loggedin' in session:
         return render_template('aadhar.html')
+    
+@app.route("/signin")
+def signin():
+    if 'loggedin' in session:
+        return render_template('index1.html')
     
 
 if __name__ == '__main__':
