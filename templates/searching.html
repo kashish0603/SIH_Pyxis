@@ -137,25 +137,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="wrapper">
-    <div class="container1">
-      <h2>Upload a file for CCTV searching</h2>
-      <div class="upload-container">
-        <div class="border-container">
-          <div class="icons fa-4x">
-            <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
-            <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
-            <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
-          </div>
-          <!-- <input type="file" id="file-upload"> -->
-          <p>Drag and drop files here, or browse your computer.
-            </p>
-            <form method="post" action="" enctype="multipart/form-data">
-            <input type="file" accept="image/*" name="image" id="file" enctype="multipart/form-data">
-            <button id="show">Submit</button> </form>
-        </div>
-      </div>
-    </div>
-  </div>
+    
   <div class="wrapper1" style="display:none">
     <div class="container1">
       <h2>Searching type:</h2>
@@ -166,7 +148,19 @@ $(document).ready(function(){
             <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
             <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
           </div> -->
+          <div class="grid-container">
+
+            <form action="" method="post">
+                <div class="grid-child purple">
+                    <input type="submit" value="Video Searching" name="video">
+                </div>
+            
+                <div class="grid-child green">
+                   <input type="submit" value="Real-Time Searching" name="realtime">
+                </div>
+            </form>
           
+        </div>
           
         </div>
       </div>
