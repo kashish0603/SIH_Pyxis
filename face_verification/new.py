@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 from facenet_pytorch import MTCNN, InceptionResnetV1
 import torch
 from torchvision import datasets
 from torch.utils.data import DataLoader
 from PIL import Image
 import os
+=======
+>>>>>>> 2d5ade31f65880a6688555c4dc01b04853f1d186
 def facerecog():
     # import libraries
     import cv2
@@ -39,7 +42,11 @@ def facerecog():
             img_path = 'images/frame'+str(count+1)+".jpg"
             cv2.imwrite(img_path,frame)
 
+<<<<<<< HEAD
             result = face_match(img_path,'pytorch_face_recognition//data2.pt')
+=======
+            result = face_match(img_path,'FaceRec2//pytorch_face_recognition//data2.pt')
+>>>>>>> 2d5ade31f65880a6688555c4dc01b04853f1d186
 
             if result[1]>1.0:
                 print("No match")
@@ -62,7 +69,16 @@ def facerecog():
     video_capture.release()
 
 def face_match(img_path, data_path): # img_path= location of photo, data_path= location of data.pt 
+<<<<<<< HEAD
 
+=======
+    from facenet_pytorch import MTCNN, InceptionResnetV1
+    import torch
+    from torchvision import datasets
+    from torch.utils.data import DataLoader
+    from PIL import Image
+    import os
+>>>>>>> 2d5ade31f65880a6688555c4dc01b04853f1d186
 
     mtcnn = MTCNN(image_size=240, margin=0, min_face_size=20)
     resnet = InceptionResnetV1(pretrained='vggface2').eval()
@@ -88,3 +104,9 @@ def face_match(img_path, data_path): # img_path= location of photo, data_path= l
     os.remove(img_path)
 
     return result
+<<<<<<< HEAD
+=======
+
+if __name__ == '__main__':
+    facerecog()
+>>>>>>> 2d5ade31f65880a6688555c4dc01b04853f1d186
