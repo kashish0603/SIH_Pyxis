@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!--====== Title ======-->
     <title>Human Trafficking Team Pyxis</title>
 
@@ -39,6 +39,9 @@
     <!--====== Style css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='./style.css')}}">
 
+    <!-- ===== Popup css ===== -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='./popup.css')}}"> -->
+
 
 </head>
 
@@ -64,7 +67,7 @@
     </div>
 
     <!--====== PRELOADER ENDS START ======-->
-
+    
     <!--====== HEADER PART START ======-->
 
     <header id="home" class="header-area pt-100">
@@ -129,7 +132,7 @@
                     <div class="col-xl-8 col-lg-9 col-sm-10">
                         <div class="banner-content">
                             <h4 class="sub-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">Team Pyxis</h4>
-                            <h1 class="banner-title mt-10 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="2s"><span>REHA</span> Prevention of Human Trafficking </h1>
+                            <h1 class="banner-title mt-10 wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s"><span>REHA</span> Prevention of Human Trafficking </h1>
                         </div> <!-- banner content -->
                     </div>
                 </div> <!-- row -->
@@ -151,8 +154,36 @@
                         <div class="single-image float-left">
                             <img src="{{ url_for('static', filename='./aadhar_ccard1.webp')}}" alt="About">
                         </div> <!-- single image -->
-                        <div data-aos="fade-right" class="about-btn">
-                            <a class="main-btn" href="#"><span>Find</span> The missing person</a>
+                        <div data-aos="fade-right" class="about-btn"  >
+                            <button type="submit" class="main-btn" onclick="openPopup()"><span>Find</span> The missing person</button>
+                            <div class="popup" id="popup">
+                                <div class="wrapper1" >
+                                    <div class="container1">
+                                <div class="upload-container">
+                                    <div class="border-container">
+                        <div class="grid-container">
+                            <a href="{{ url_for('biometric')}}" class="pop"><div class="grid-child">
+                                <img src="{{ url_for('static', filename='./finger.jpg')}}" width="150px"/>
+                                <br><br>
+                                <h3 class="grid">Aadhar details via Biometric Analysis</h3>
+                            </div></a>
+                            <a href="{{ url_for('aadhar')}}" class="pop"><div class="grid-child">
+                                <img src="{{ url_for('static', filename='./facerecog.jpg')}}" width="200px" />
+                                <br><br>
+                                <h3 class="grid">Aadhar details via Facial Analysis</h3>
+                            </div></a>
+                            <a href="{{ url_for('cctv')}}" class="pop"><div class="grid-child">
+                                <img src="{{ url_for('static', filename='./cctvv.png')}}" width="150px" />
+                                <br><br><br>
+                                <h3 class="grid">CCTV Searching</h3>
+                            </div></a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                                <button type="button" onclick="closePopup()">Cancel</button>
+                            </div>
                         </div>
                         <div class="single-image image-tow float-right">
                             <img src="{{ url_for('static', filename='./cctv2.jpg')}}" alt="About">
@@ -419,6 +450,7 @@
 
     <!--====== TESTIMONIAL PART ENDS ======-->
 
+
     <!--====== BACK TO TOP PART START ======-->
 
     <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
@@ -473,6 +505,21 @@
 
     <!--====== Main js ======-->
     <script src="{{ url_for('static', filename='./main.js')}}"></script>
+
+
+    <!-- ===== Pop-up Part starts ===== -->
+    
+    <!-- ===== Pop-up part ends ===== -->
+
+    <script>
+        let popup = document.getElementById("popup");
+        function openPopup(){
+            popup.classList.add("open-popup");
+        }
+        function closePopup(){
+            popup.classList.remove("open-popup");
+        }
+    </script>
 
 </body>
 

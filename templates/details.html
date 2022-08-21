@@ -41,6 +41,7 @@
     <!-- <link rel="stylesheet" href="E:\Projects\PYXIS_SIH\static\style.css"> -->
     <!-- ===== Biometric css ===== -->
     <link rel="stylesheet" href="{{ url_for('static', filename='./biometric.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./detail.css')}}">
 
 </head>
 
@@ -81,7 +82,6 @@
             <img src="{{ url_for('static', filename='./shape-3.png')}}" alt="shape">
             <!-- <img src="E:\Projects\PYXIS_SIH\static\shape-3.png" alt="shape"> -->
         </div> <!-- header shape three -->
-
 
         <div class="shape header-shape-fore">
             <!-- <img src="{{ url_for('static', filename='./shape-4.png')}}" alt="shape"> -->
@@ -126,67 +126,33 @@
             </div> <!-- container -->
         </div> <!-- navigation bar -->
 
-<!-- Upload part starts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $('#show').click(function() {
-      $('.wrapper1').toggle("slide");
-      $('.wrapper').css("display", "none");
-    });
-});
-</script>
-<div class="wrapper">
-    <div class="container1">
-      <h2>Upload a file for CCTV searching</h2>
-      <div class="upload-container">
-        <div class="border-container">
-          <div class="icons fa-4x">
-            <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
-            <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
-            <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
-          </div>
-          <!-- <input type="file" id="file-upload"> -->
-          <p>Drag and drop files here, or browse your computer.
-            </p>
-            <form method="post" action="#">
-            <input type="file" accept="image/*" name="image" id="file">
-            <button id="show">Submit</button> </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="wrapper1" style="display:none">
-    <div class="container1">
-      <h2>Searching type:</h2>
-      <div class="upload-container">
-        <div class="border-container">
-          <!-- <div class="icons fa-4x">
-            <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
-            <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
-            <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
-          </div> -->
-          <div class="grid-container">
 
-            <div class="grid-child purple">
-                <h2 class="grid"><a href="#"  > Video Searching </a></h2>
-            </div>
+<!-- ===== Details part start ===== -->
+
+<div class="grid-container">
+    <div class="grid-child">
+        <img src="E:\Projects\PYXIS_SIH\static\sample.webp" width="400px">
+    </div>
+    <div class="grid-child">
+        <div class="detail">
+            Name: 
+        </div>
+        <div class="detail">
+            Sex: 
+        </div>
+        <div class="detail">
+            Address: 
+        </div>
+        <div class="detail">
+            Father's Name: 
+        </div>
         
-            <div class="grid-child green">
-                <h2 class="grid"><a href="#" > Real-time Searching </a></h2>
-            </div>
-          
-        </div>
-          
-        </div>
-      </div>
     </div>
-  </div>
-  <hr>
- 
-<!-- Upload part ends -->
+</div>
 
-<!--====== jquery js ======-->
+<!-- ===== Details part end ===== -->
+
+        <!--====== jquery js ======-->
 <script src="{{ url_for('static', filename='./modernizr-3.6.0.min.js')}}"></script>
 <!-- <script src="E:\Projects\PYXIS_SIH\static\modernizr-3.6.0.min.js"></script> -->
 <script src="{{ url_for('static', filename='./jquery-1.12.4.min.js')}}"></script>

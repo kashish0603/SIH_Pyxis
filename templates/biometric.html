@@ -127,18 +127,10 @@
         </div> <!-- navigation bar -->
 
 <!-- Upload part starts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $('#show').click(function() {
-      $('.wrapper1').toggle("slide");
-      $('.wrapper').css("display", "none");
-    });
-});
-</script>
+
 <div class="wrapper">
     <div class="container1">
-      <h2>Upload a file for CCTV searching</h2>
+      <h2>Upload a file for biometric searching</h2>
       <div class="upload-container">
         <div class="border-container">
           <div class="icons fa-4x">
@@ -151,39 +143,12 @@ $(document).ready(function(){
             </p>
             <form method="post" action="#">
             <input type="file" accept="image/*" name="image" id="file">
-            <button id="show">Submit</button> </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="wrapper1" style="display:none">
-    <div class="container1">
-      <h2>Searching type:</h2>
-      <div class="upload-container">
-        <div class="border-container">
-          <!-- <div class="icons fa-4x">
-            <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
-            <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
-            <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
-          </div> -->
-          <div class="grid-container">
-
-            <div class="grid-child purple">
-                <h2 class="grid"><a href="#"  > Video Searching </a></h2>
-            </div>
-        
-            <div class="grid-child green">
-                <h2 class="grid"><a href="#" > Real-time Searching </a></h2>
-            </div>
-          
-        </div>
-          
+            <input type="submit" /></form>
         </div>
       </div>
     </div>
   </div>
   <hr>
- 
 <!-- Upload part ends -->
 
 <!--====== jquery js ======-->

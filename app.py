@@ -1,8 +1,11 @@
-from flask import Flask,render_template,request,redirect,session,url_for
+from flask import Flask,render_template,request,redirect,session,url_for,send_from_directory,abort,make_response
 import re
 from flask_mysqldb import MySQL
 # from flask_sqlalchemy import SQLAlchemy
 import MySQLdb.cursors
+from werkzeug.utils import secure_filename
+import os
+
 
 app = Flask(__name__)
 
@@ -67,6 +70,11 @@ def index1():
         return render_template('index1.html')
     return redirect(url_for('login'))
 
+# @app.errorhandler(404)
+# def not_found():
+#     """Page not found."""
+#     return make_response(render_template("404.html"), 404)
+
 @app.route('/logout')
 def logout():
    session.pop('loggedin', None)
@@ -83,7 +91,46 @@ def aadhar():
 def signin():
     if 'loggedin' in session:
         return render_template('index1.html')
+
+@app.route("/popup")
+def popup():
+    if 'loggedin' in session:
+        return render_template('popup.html')
+
+
+# app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
+# app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png','.jpeg', '.tif']
+# app.config['UPLOAD_PATH'] = 'uploads'
+
+# @app.route('/biometric')
+# def biometric():
+#     files = os.listdir(app.config['UPLOAD_PATH'])
+#     return render_template('biometric.html')
+
+# @app.route('/biometricsubmit', methods=['POST'])
+# def upload_files():
+#     uploaded_file = request.files['file']
+#     filename = secure_filename(uploaded_file.filename)
+#     if filename != '':
+#         file_ext = os.path.splitext(filename)[1]
+#         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+#             abort(400)
+#         uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+#     return redirect(url_for('biometric'))
     
+# @app.route('/uploads/<filename>')
+# def upload(filename):
+#     return send_from_directory(app.config['UPLOAD_PATH'], filename)
+
+@app.route("/biometric")
+def biometric():
+    if 'loggedin' in session:
+        return render_template('biometric.html')
+
+@app.route("/cctv")
+def cctv():
+    if 'loggedin' in session:
+        return render_template('cctv.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host ="localhost", port = int("5000"))    
