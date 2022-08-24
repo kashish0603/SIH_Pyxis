@@ -45,18 +45,19 @@ def facerecog():
 
             if result[1]>1.0:
                 print("No match")
+                return 'none'
+                break
             else:
                 return result
                 break
                 
-        
-        cv2.imshow("Footage",frame)
-        
-        if cv2.waitKey(1) & 0XFF == ord('q'):
+        if count>30:
+            print("No face found")
+            return 'none'
             break
-        
 
-    # writer.release()
+        cv2.imshow("Footage",frame)
+
     video_capture.release()
 
 def face_match(img_path, data_path, img_vid=False): # img_path= location of photo, data_path= location of data.pt 
@@ -83,7 +84,7 @@ def face_match(img_path, data_path, img_vid=False): # img_path= location of phot
     os.remove(img_path)
 
     if result[1]>1:
-        return "No result"
+        return "none"
     else:
         return result
 

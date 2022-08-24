@@ -127,7 +127,16 @@
         </div> <!-- navigation bar -->
         
         <div>
-            <img class="img-disp" src= "{{ img_path }}" alt="" width="400" height="400">
+            {% if img_path == 'none' %}
+                <h1 class="h1-disp">No Result</h1>
+            
+            {% elif img_path == 'none2' %}
+                <h1 class="h1-disp">Resubmit the data</h1>
+
+            {% else %}
+                <img class="img-disp" src= "{{ img_path }}" alt="" width="400" height="400">
+            
+            {% endif %}
         </div>
         
         <style>
@@ -135,6 +144,10 @@
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .h1-disp {
+                text-align: center;
             }
         </style>
 <!-- Upload part starts -->

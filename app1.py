@@ -1,3 +1,4 @@
+from cgitb import handler
 from email import message
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask import session as login_session
@@ -57,29 +58,49 @@ def cctv():
 def searching():
     mess = request.args['messages']
     print(mess)
-    if int(mess)==1:
-        result = face_match('static/frames/img.jpg','face_verification/data2.pt')
-        folder = os.path.join('static/photos',result[0])
-        print("Photo matched with: ",result[0])
-        file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
-    elif int(mess)==2:
-        result = facerecog()
-        folder = os.path.join('static/photos',result[0])
-        print("Face matched with: ",result[0])
-        file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
-    else:
-        result = biometrics('static/frames/img.tif')
-        folder = os.path.join('static/photos',result)
-        os.remove('static/frames/img.tif')
-        print("Fingerprint matched with: ",result)
-        file = os.path.join(folder,os.listdir(os.path.join('static/photos',result))[0])
+    try:
+        if int(mess)==1:
+                result = face_match('static/frames/img.jpg','face_verification/data2.pt')
+                
+                if result=="none":
+                    file='none'
+                else:
+                    folder = os.path.join('static/photos',result[0])
+                    print("Photo matched with: ",result[0])
+                    file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
+
+        elif int(mess)==2:
+            result = facerecog()
+
+            if result=="none":
+                file='none'
+            else:
+                folder = os.path.join('static/photos',result[0])
+                print("Face matched with: ",result[0])
+                file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
+    
+        else:
+            result = biometrics('static/frames/img.tif')
+
+            if result=="none":
+                file='none'
+                os.remove('static/frames/img.tif')
+            else:
+                folder = os.path.join('static/photos',result)
+                print("Fingerprint matched with: ",result)
+                os.remove('static/frames/img.tif')
+                file = os.path.join(folder,os.listdir(os.path.join('static/photos',result))[0])
+    
+    except:
+        file = 'none2'
 
     return render_template('searching.html',img_path=file)
 
 @app.route('/aadhar', methods=['GET', 'POST'])
 def aadhar():
-    if request.method == 'POST':
+    if request.method=='POST':
         return redirect(url_for('searching',messages=2))
+    
     return render_template('aadhar.html')
 
 

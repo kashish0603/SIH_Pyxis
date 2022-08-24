@@ -34,3 +34,5 @@ def biometrics(img_path):
             result = str(file).split('.')[0]
             return result
     
+    return 'none'
+    
