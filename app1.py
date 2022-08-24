@@ -38,8 +38,8 @@ def biometric():
         return redirect(url_for('searching',messages=0))
     return render_template('biometric.html')
 
-@app.route('/cctv', methods=['GET', 'POST'])
-def cctv():
+@app.route('/aadhar', methods=['GET', 'POST'])
+def aadhar():
     if request.method == 'POST':
         img = request.files['image']
         img.save(os.path.join('static/frames', img.filename))
@@ -52,7 +52,7 @@ def cctv():
         
         return redirect(url_for('searching',messages=1))
 
-    return render_template('cctv.html')
+    return render_template('aadhar.html')
 
 @app.route('/searching', methods=['GET', 'POST'])
 def searching():
@@ -96,12 +96,12 @@ def searching():
 
     return render_template('searching.html',img_path=file)
 
-@app.route('/aadhar', methods=['GET', 'POST'])
-def aadhar():
+@app.route('/cctv', methods=['GET', 'POST'])
+def cctv():
     if request.method=='POST':
         return redirect(url_for('searching',messages=2))
     
-    return render_template('aadhar.html')
+    return render_template('cctv.html')
 
 
 
