@@ -3,6 +3,7 @@ from email import message
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask import session as login_session
 from flask import make_response
+import pandas as pd
 import os
 from face_verification.new import facerecog, face_match
 from Biometric.biometric import biometrics
@@ -58,6 +59,8 @@ def aadhar():
 def searching():
     mess = request.args['messages']
     print(mess)
+    persondata = ''
+
     try:
         if int(mess)==1:
                 result = face_match('static/frames/img.jpg','face_verification/data2.pt')
@@ -68,6 +71,7 @@ def searching():
                     folder = os.path.join('static/photos',result[0])
                     print("Photo matched with: ",result[0])
                     file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
+                    namee = result[0]
 
         elif int(mess)==2:
             result = facerecog()
@@ -78,6 +82,7 @@ def searching():
                 folder = os.path.join('static/photos',result[0])
                 print("Face matched with: ",result[0])
                 file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
+                namee = result[0]
     
         else:
             result = biometrics('static/frames/img.tif')
@@ -90,11 +95,25 @@ def searching():
                 print("Fingerprint matched with: ",result)
                 os.remove('static/frames/img.tif')
                 file = os.path.join(folder,os.listdir(os.path.join('static/photos',result))[0])
+                namee = result
     
     except:
         file = 'none2'
 
-    return render_template('searching.html',img_path=file)
+    data = pd.read_csv("static/data/data.csv")
+    if 'none' not in file:
+        nameset = data['Name']
+
+        for i in range(len(nameset)):
+            if namee.lower() in nameset[i].lower():
+                print("Row number",i+1)
+                persondata = data.iloc[i,:]
+                break
+
+        print(persondata)
+        print(persondata[0])
+
+    return render_template('searching.html',img_path=file, persondat=zip(data.columns,persondata))
 
 @app.route('/cctv', methods=['GET', 'POST'])
 def cctv():
@@ -102,7 +121,6 @@ def cctv():
         return redirect(url_for('searching',messages=2))
     
     return render_template('cctv.html')
-
 
 
 if __name__ == '__main__':
