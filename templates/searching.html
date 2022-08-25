@@ -93,7 +93,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="{{ url_for('select') }}">
                                 PyXis
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,16 +105,16 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">Home</a>
+                                        <a class="page-scroll" href="{{ url_for('select') }}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#about">About</a>
+                                        <a class="page-scroll" href="{{ url_for('select') }}">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#service">Services</a>
+                                        <a class="page-scroll" href="{{ url_for('select') }}">Services</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#team">Team</a>
+                                        <a class="page-scroll" href="{{ url_for('select') }}">Team</a>
                                     </li>
                             
                                 </ul> <!-- navbar nav -->
