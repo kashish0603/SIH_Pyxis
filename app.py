@@ -75,7 +75,7 @@ def index1():
 #     """Page not found."""
 #     return make_response(render_template("404.html"), 404)
 
-@app.route('/logout')
+""" @app.route('/logout')
 def logout():
    session.pop('loggedin', None)
    session.pop('id', None)
@@ -133,4 +133,4 @@ def cctv():
         return render_template('cctv.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host ="localhost", port = int("5000"))    
+    app.run(debug=True, host ="localhost", port = int("5000"))    """
