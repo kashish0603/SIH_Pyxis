@@ -15,7 +15,7 @@ def facerecog():
 
     while True:
         face_locations = facedetector()
-
+        print("In")
         if face_locations:
             img_path = 'static/frames/frame.jpg'
 

@@ -76,6 +76,7 @@ def searching():
         elif int(mess)==2:
             result = facerecog()
             result2 = face_match('static/frames2/img.jpg','face_verification/data2.pt')
+            print("y")
 
             print(result[0],result2[0])
 
