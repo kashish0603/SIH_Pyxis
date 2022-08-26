@@ -69,20 +69,26 @@ def searching():
                     file='none'
                 else:
                     folder = os.path.join('static/photos',result[0])
-                    print("Photo matched with: ",result[0])
+                    print("Photo matched with: ",result[0]," Distance: ",result[1])
                     file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
                     namee = result[0]
 
         elif int(mess)==2:
             result = facerecog()
+            result2 = face_match('static/frames2/img.jpg','face_verification/data2.pt')
+
+            print(result[0],result2[0])
 
             if result=="none":
                 file='none'
             else:
-                folder = os.path.join('static/photos',result[0])
-                print("Face matched with: ",result[0])
-                file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
-                namee = result[0]
+                if result[0] == result2[0]:
+                    folder = os.path.join('static/photos',result[0])
+                    print("Face matched with: ",result[0]," Distance: ",result[1])
+                    file = os.path.join(folder,os.listdir(os.path.join('static/photos',result[0]))[0])
+                    namee = result[0]
+                else:
+                    file='none'
     
         else:
             result = biometrics('static/frames/img.tif')
@@ -118,6 +124,15 @@ def searching():
 @app.route('/cctv', methods=['GET', 'POST'])
 def cctv():
     if request.method=='POST':
+        img = request.files['image']
+        img.save(os.path.join('static/frames2', img.filename))
+
+        # If img.jpg already exists, delete it
+        if os.path.exists('static/frames2/img.jpg'):
+            os.remove('static/frames2/img.jpg')
+        # Rename the image to image.jpg
+        os.rename(os.path.join('static/frames2', img.filename), os.path.join('static/frames2', 'img.jpg'))
+
         return redirect(url_for('searching',messages=2))
     
     return render_template('cctv.html')
